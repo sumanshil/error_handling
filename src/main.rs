@@ -7,6 +7,9 @@ fn main() {
 fn write_hello(file: &str) {
     let r  = File::create(file);
     if let Ok(mut f) = r {
-        f.write_all(b"Hello");
+        let r = f.write_all(b"Hello");
+        if let Err(e) = r {
+            println!("hey there is some error {:?}", e);
+        }
     }
 }
